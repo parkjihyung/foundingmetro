@@ -5,6 +5,9 @@ import java.util.*;
 
 //지하철역 정보로 노선도를 만드는 클래스이다
 public class MakeRouteMap {
+	
+	public MakeRouteMap() {
+	}
 
 	public ArrayList<Station<AdjStation>> stations = new ArrayList<Station<AdjStation>>();
 	ArrayList<String[]> raw = new ArrayList<>();
@@ -13,10 +16,11 @@ public class MakeRouteMap {
 		return stations;
 	}
 
-	public MakeRouteMap() {
+	public void executeRouteMap() {
 		
 		// TODO Auto-generated method stub
-		String file = "src\\지하철역정보.csv";
+		// String file = "src\\지하철역정보.csv";
+		String file = "E:\\Eclipse\\eclipse-jee-2021-09-R-win32-x86_64\\workspace\\foundingmetro\\metro\\src\\지하철역정보.csv";
 		String line = "";
 
 		try {
