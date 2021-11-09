@@ -1,18 +1,21 @@
 package metro;
 
-public class Station {
-	private String name;
-	float distence=1;
+import java.util.ArrayList;
+
+public class Station<T> {
+	protected String name;
+	protected String lineNumber;
+	
 	public Station() {}
-	public Station(float distence,String name){
-		this.distence=distence;
+	public Station(String name,String lineNumber){
 		this.name=name;
+		this.lineNumber=lineNumber;
 	}
-	private Station next = null;
-	public void setNext(Station next) {
-		this.next=next;
+	public String getName() {
+		return name;
 	}
-	public Station getNext() {
-		return this.next;
+	public String getLineNumber() {
+		return lineNumber;
 	}
+	ArrayList<T> AdjStnList = new ArrayList<>();
 }
