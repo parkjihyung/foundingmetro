@@ -18,8 +18,8 @@ public class RouteMapController {
 			if(StartStn.equals("0") || EndStn.equals("0"))break;
 			FindShortestPath f = new FindShortestPath(StartStn, EndStn, makeRouteMap.getStaions());
 			f.dijkstra();
-			if(f.showShortestPath() != null) {
-				String[] s = f.showShortestPath();
+			if(f.getShortestPath() != null) {
+				String[] s = f.getShortestPath();
 				for(int i = 0; i < s.length-1; ++i) {
 					 System.out.print( s[i] + " -> ");
 				}

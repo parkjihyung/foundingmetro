@@ -87,7 +87,7 @@ public class FindShortestPath {
 		return -1;
 	}
 	
-	public String[] showShortestPath() {
+	public String[] getShortestPath() {
 		String[] r = null;
 		if(getEndStnIndex() == -1 || saveRoute[getEndStnIndex()] == null) {//출발역이나 도착역이 없으면 null을 반환
 			return r;
