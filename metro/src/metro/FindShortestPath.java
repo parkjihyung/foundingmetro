@@ -33,24 +33,22 @@ public class FindShortestPath {
 				break;
 			}
 		}
-		for(int j = 0; j < stns.size(); ++j) {
+		if(index==stns.size()) return;//출발역이 없으면 return
+		for(int j = 0; j < stns.size(); ++j) {//값 초기화
 			distence[j]=INF;
 			check[j]=false;
 			}
 		distence[index]=0;
-		//check[index]=true;
 		saveRoute[index]=st.getName();
 		if(startStn.equals(endStn)) {
 			return;
 		}
 		Queue<AdjStation> queue = new LinkedList<>();
-		queue.add(new AdjStation(startStn, stns.get(index).getLineNumber(), 0, index));
+		queue.add(new AdjStation(startStn, stns.get(index).getLineNumber(), 0, index));//시작역 추가
 		distence[index]=0;
 		while(!queue.isEmpty()) {
 			AdjStation curNode = queue.poll();
-			//System.out.println(curNode.name);
 			int cur = curNode.getIndex();
-			//System.out.println(stns.get(cur).AdjStnList.size());
 			if(check[cur] == true) continue;
 			check[cur]=true;
 			for(int i = 0; i < stns.get(cur).getAdjStnList().size(); ++i) {
@@ -86,7 +84,12 @@ public class FindShortestPath {
 	}
 	
 	public String[] showShortestPath() {
-		String[] r = saveRoute[getEndStnIndex()].split(" ");
+		String[] r = null;
+		if(getEndStnIndex()==-1 || saveRoute[getEndStnIndex()] == null) {//출발역이나 도착역이 도착하지 않으면 null을 반환
+			return r;
+		}
+		
+		r = saveRoute[getEndStnIndex()].split(" ");
 		if(r[r.length-1].split("-").length>1) {
 			r[r.length-1]=r[r.length-1].split("-")[0];
 		}
