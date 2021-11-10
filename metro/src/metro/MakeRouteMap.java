@@ -74,14 +74,13 @@ public class MakeRouteMap {
 	private void AddNextStation(String[] raw, Station<AdjStation> stn, int index) {
 		String[] nextS = raw;
 		AdjStation next = new AdjStation(nextS[1], nextS[0], Double.valueOf(nextS[2]), index);
-		stn.AdjStnList.add(next);
+		stn.getAdjStnList().add(next);
 		return;
 	}
 	private void AddPrevStation(String[] raw, Station<AdjStation> stn, double distence, int index) {
 		AdjStation prev = new AdjStation(raw[1], raw[0], distence, index);
-		stn.AdjStnList.add(prev);
+		stn.getAdjStnList().add(prev);
 		return;
 	}
 
 }
-

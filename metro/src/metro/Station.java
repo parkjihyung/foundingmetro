@@ -21,5 +21,10 @@ public class Station<T> {
 		return lineNumber;
 	}
 	
-	ArrayList<T> AdjStnList = new ArrayList<>();
+	private ArrayList<T> AdjStnList = new ArrayList<>();
+
+	public ArrayList<T> getAdjStnList() {
+		return AdjStnList;
+	}
+
 }
