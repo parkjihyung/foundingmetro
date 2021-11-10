@@ -10,8 +10,8 @@ public class FindShortestPath {
 	String[] saveRoute;
 
 	String startStn,endStn;
-	Station<AdjStation> st;//í˜„ì¬ ìˆëŠ” ì—­
-	Boolean[] check;//ì—­ì„ ë°©ë¬¸í–ˆëŠ”ì§€ ì—¬ë¶€ë¥¼ ì²´í¬
+	Station<AdjStation> st;//ÇöÀç ÀÖ´Â ¿ª
+	Boolean[] check;//¿ªÀ» ¹æ¹®Çß´ÂÁö ¿©ºÎ¸¦ Ã¼Å©
 	ArrayList<Station<AdjStation>> stns;
 	
 	public FindShortestPath(String startStn,String endStn,ArrayList<Station<AdjStation>> s) {
@@ -33,8 +33,8 @@ public class FindShortestPath {
 				break;
 			}
 		}
-		if(index==stns.size()) return;//ì¶œë°œì—­ì´ ì—†ìœ¼ë©´ return
-		for(int j = 0; j < stns.size(); ++j) {//ê°’ ì´ˆê¸°í™”
+		if(index==stns.size()) return;//Ãâ¹ß¿ªÀÌ ¾øÀ¸¸é return
+		for(int j = 0; j < stns.size(); ++j) {//°ª ÃÊ±âÈ­
 			distence[j]=INF;
 			check[j]=false;
 			}
@@ -44,7 +44,7 @@ public class FindShortestPath {
 			return;
 		}
 		Queue<AdjStation> queue = new LinkedList<>();
-		queue.add(new AdjStation(startStn, stns.get(index).getLineNumber(), 0, index));//ì‹œì‘ì—­ ì¶”ê°€
+		queue.add(new AdjStation(startStn, stns.get(index).getLineNumber(), 0, index));//½ÃÀÛ¿ª Ãß°¡
 		distence[index]=0;
 		while(!queue.isEmpty()) {
 			AdjStation curNode = queue.poll();
@@ -85,7 +85,7 @@ public class FindShortestPath {
 	
 	public String[] showShortestPath() {
 		String[] r = null;
-		if(getEndStnIndex()==-1 || saveRoute[getEndStnIndex()] == null) {//ì¶œë°œì—­ì´ë‚˜ ë„ì°©ì—­ì´ ì—†ìœ¼ë©´ nullì„ ë°˜í™˜
+		if(getEndStnIndex() == -1 || saveRoute[getEndStnIndex()] == null) {//Ãâ¹ß¿ªÀÌ³ª µµÂø¿ªÀÌ ¾øÀ¸¸é nullÀ» ¹İÈ¯
 			return r;
 		}
 		
@@ -94,5 +94,11 @@ public class FindShortestPath {
 			r[r.length-1]=r[r.length-1].split("-")[0];
 		}
 		return r;
+	}
+	
+	public double getDistence() {
+		int i = getEndStnIndex();
+		distence[i] = Double.parseDouble(String.format("%.1f", distence[i]));
+		return distence[i];
 	}
 }
