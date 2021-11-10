@@ -26,13 +26,14 @@ public class FindShortestPath {
 		saveRoute= new String[stns.size()];
 		distence = new double[stns.size()];
 		check = new Boolean[stns.size()];
-		for(index=0;index<stns.size();++index) {
+		
+		for(index=0; index < stns.size(); ++index) {
 			if(startStn.equals(stns.get(index).getName())) {
 				st=stns.get(index);
 				break;
 			}
 		}
-		for(int j=0;j<stns.size();++j) {
+		for(int j = 0; j < stns.size(); ++j) {
 			distence[j]=INF;
 			check[j]=false;
 			}
@@ -52,9 +53,9 @@ public class FindShortestPath {
 			//System.out.println(stns.get(cur).AdjStnList.size());
 			if(check[cur] == true) continue;
 			check[cur]=true;
-			for(int i=0;i<stns.get(cur).AdjStnList.size();++i) {
+			for(int i = 0; i < stns.get(cur).AdjStnList.size(); ++i) {
 				AdjStation s = stns.get(cur).AdjStnList.get(i);
-				if(distence[s.getIndex()]>distence[cur] + s.getDistence()) {
+				if(distence[s.getIndex()] > distence[cur] + s.getDistence()) {
 					distence[s.getIndex()] = distence[cur] + s.getDistence();
 					if(curNode.getLineNumber().equals(s.getLineNumber())) {
 						saveRoute[s.getIndex()] = saveRoute[cur] +" "+ s.getName();

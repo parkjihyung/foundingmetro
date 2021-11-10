@@ -8,7 +8,7 @@ public class Station<T> {
 	
 	public Station() {}
 	
-	public Station(String name,String lineNumber){
+	public Station(String name, String lineNumber){
 		this.name=name;
 		this.lineNumber=lineNumber;
 	}
