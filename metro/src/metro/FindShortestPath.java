@@ -27,6 +27,10 @@ public class FindShortestPath {
 		distence = new double[stns.size()];
 		check = new Boolean[stns.size()];
 		
+		if(startStn.equals(endStn)) {
+			return;
+		}
+		
 		for(index=0; index < stns.size(); ++index) {
 			if(startStn.equals(stns.get(index).getName())) {
 				st=stns.get(index);
@@ -40,9 +44,7 @@ public class FindShortestPath {
 			}
 		distence[index]=0;
 		saveRoute[index]=st.getName();
-		if(startStn.equals(endStn)) {
-			return;
-		}
+		
 		Queue<AdjStation> queue = new LinkedList<>();
 		queue.add(new AdjStation(startStn, stns.get(index).getLineNumber(), 0, index));//시작역 추가
 		distence[index]=0;
@@ -59,11 +61,13 @@ public class FindShortestPath {
 						if(curNode.getName().equals(s.getName())) {
 							saveRoute[s.getIndex()] = saveRoute[cur];
 						}
+						
 						else{
 							saveRoute[s.getIndex()] = saveRoute[cur] +" "+ s.getName();
 							}
 					}
 					else {
+						
 						saveRoute[s.getIndex()] = saveRoute[cur] + "-" +s.getLineNumber();
 					}
 					
@@ -90,9 +94,14 @@ public class FindShortestPath {
 		}
 		
 		r = saveRoute[getEndStnIndex()].split(" ");
+		
 		if(r[r.length-1].split("-").length>1) {
 			r[r.length-1]=r[r.length-1].split("-")[0];
 		}
+		if(r[0].split("-").length>1) {
+			r[0] = r[0].split("-")[0];
+		}
+		
 		return r;
 	}
 	
