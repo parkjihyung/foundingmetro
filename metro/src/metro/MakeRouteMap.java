@@ -49,10 +49,10 @@ public class MakeRouteMap {
 				AddNextStation(raw.get(i+1), stations.get(i - 1), i);
 				continue;
 			}
-			if(raw.get(i)[2].equals("0") || (!(raw.get(i)[0].equals(raw.get(i - 1)[0])))) {
+			if(!(raw.get(i)[0].equals(raw.get(i - 1)[0]))) {
 				AddNextStation(raw.get(i + 1), stations.get(i - 1), i);
 			}
-			else if(!(raw.get(i + 1)[0].equals(raw.get(i)[0]))){
+			else if(!(raw.get(i + 1)[0].equals(raw.get(i)[0])) || raw.get(i + 1)[2].equals("0")){
 				AddPrevStation(raw.get(i - 1), stations.get(i - 1),Double.valueOf(raw.get(i)[2]), i - 2);
 			}
 			else{
