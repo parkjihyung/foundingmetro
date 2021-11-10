@@ -6,8 +6,8 @@ import java.util.Queue;
 
 public class FindShortestPath {
 	static final double INF = (double) 99999;
-	double[] distence = null;
-	String[] saveRoute;
+	private double[] distence = null;
+	private String[] saveRoute;
 
 	String startStn,endStn;
 	Station<AdjStation> st;//현재 있는 역
