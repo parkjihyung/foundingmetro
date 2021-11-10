@@ -98,6 +98,7 @@ public class FindShortestPath {
 	
 	public double getDistence() {
 		int i = getEndStnIndex();
+		if (i == -1)return 0;
 		distence[i] = Double.parseDouble(String.format("%.1f", distence[i]));
 		return distence[i];
 	}
