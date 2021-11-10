@@ -58,7 +58,12 @@ public class FindShortestPath {
 				if(distence[s.getIndex()] > distence[cur] + s.getDistence()) {
 					distence[s.getIndex()] = distence[cur] + s.getDistence();
 					if(curNode.getLineNumber().equals(s.getLineNumber())) {
-						saveRoute[s.getIndex()] = saveRoute[cur] +" "+ s.getName();
+						if(curNode.getName().equals(s.getName())) {
+							saveRoute[s.getIndex()] = saveRoute[cur];
+						}
+						else{
+							saveRoute[s.getIndex()] = saveRoute[cur] +" "+ s.getName();
+							}
 					}
 					else {
 						saveRoute[s.getIndex()] = saveRoute[cur] + "-" +s.getLineNumber();
@@ -80,7 +85,11 @@ public class FindShortestPath {
 		return -1;
 	}
 	
-	public void showShortestPath() {
+	public String[] showShortestPath() {
 		String[] r = saveRoute[getEndStnIndex()].split(" ");
+		if(r[r.length-1].split("-").length>1) {
+			r[r.length-1]=r[r.length-1].split("-")[0];
+		}
+		return r;
 	}
 }
