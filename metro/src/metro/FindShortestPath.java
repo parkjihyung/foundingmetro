@@ -53,8 +53,8 @@ public class FindShortestPath {
 			//System.out.println(stns.get(cur).AdjStnList.size());
 			if(check[cur] == true) continue;
 			check[cur]=true;
-			for(int i = 0; i < stns.get(cur).AdjStnList.size(); ++i) {
-				AdjStation s = stns.get(cur).AdjStnList.get(i);
+			for(int i = 0; i < stns.get(cur).getAdjStnList().size(); ++i) {
+				AdjStation s = stns.get(cur).getAdjStnList().get(i);
 				if(distence[s.getIndex()] > distence[cur] + s.getDistence()) {
 					distence[s.getIndex()] = distence[cur] + s.getDistence();
 					if(curNode.getLineNumber().equals(s.getLineNumber())) {
